@@ -30,3 +30,11 @@ config :rumbl, Rumbl.Mailer, adapter: Swoosh.Adapters.Test
 config :phoenix, :plug_init_mode, :runtime
 
 config :pbkdf2_elixir, :rounds, 1
+
+wolfram_app_id =
+  System.get_env("WOLFRAM_APP_ID") ||
+  raise """
+  environment variable WOLFRAM_APP_ID is missing.
+  """
+
+config :info_sys, :wolfram, app_id: wolfram_app_id
